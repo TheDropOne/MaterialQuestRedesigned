@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_level_holder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="by.thedrop.materialquestredesigned.Activities.LevelHolderActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_available_levels"
+        android:id="@+id/no_levels_textview"
+        android:textSize="22sp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+
+</FrameLayout>
+
