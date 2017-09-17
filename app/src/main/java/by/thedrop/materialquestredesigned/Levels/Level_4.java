@@ -58,7 +58,7 @@ public class Level_4 extends BasicLevel implements SwipeRefreshLayout.OnRefreshL
     List<Level_4_card> mCards;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState){
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
@@ -91,7 +91,7 @@ public class Level_4 extends BasicLevel implements SwipeRefreshLayout.OnRefreshL
                     mNext.setVisibility(View.GONE);
                     canSolve = false;
                 }
-                if(mCards.size() == 3){
+                if (mCards.size() == 3) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         int cx = mNext.getWidth() / 2;
                         int cy = mNext.getHeight() / 2;
@@ -117,7 +117,7 @@ public class Level_4 extends BasicLevel implements SwipeRefreshLayout.OnRefreshL
                         public void run() {
                             LevelHolderActivity.changeLevel(4, v.getContext());
                         }
-                    }, 800);
+                    }, 1500);
                 }
             }
         });
@@ -126,7 +126,8 @@ public class Level_4 extends BasicLevel implements SwipeRefreshLayout.OnRefreshL
 
         return v;
     }
-    class LoadRV extends AsyncTask<Void,Void,Void>{
+
+    class LoadRV extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -145,7 +146,7 @@ public class Level_4 extends BasicLevel implements SwipeRefreshLayout.OnRefreshL
     @Override
     public void onRefresh() {
         Level_4_card card = null;
-        switch (mCards.size()){
+        switch (mCards.size()) {
             case 0:
                 card = new Level_4_card("Не нажимай на кнопку", "Не надо");
                 break;
@@ -159,7 +160,7 @@ public class Level_4 extends BasicLevel implements SwipeRefreshLayout.OnRefreshL
                 card = new Level_4_card("Ну как знаешь...", "Мое дело предупредить");
                 break;
         }
-        if(card != null && canSolve){
+        if (card != null && canSolve) {
             final Level_4_card finalCard = card;
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -170,7 +171,7 @@ public class Level_4 extends BasicLevel implements SwipeRefreshLayout.OnRefreshL
                 }
             }, 1000);
             Log.i("Level", "" + mCards.size());
-        }else{
+        } else {
             mSwipeRefreshLayout.setRefreshing(false);
         }
     }

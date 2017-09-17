@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/level_6_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/level_6_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/level_is"
+            android:textColor="@color/buttonGrey"
+            android:textSize="22sp"
+            />
+
+        <DatePicker
+            android:id="@+id/level_6_date_picker"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_below="@+id/level_6_name"
+            android:layout_centerHorizontal="true"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false">
+
+        </DatePicker>
+
+        <ImageView
+            android:id="@+id/level_6_image_view"
+            android:layout_width="280dp"
+            android:layout_height="360dp"
+            android:layout_below="@+id/level_6_date_picker"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/level_6_twin_plane"/>
+
+        <TextView
+            android:id="@+id/level_6_passed"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="@string/level_passed"
+            android:textSize="30sp"
+            />
+    </RelativeLayout>
+</RelativeLayout>

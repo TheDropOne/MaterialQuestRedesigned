@@ -96,7 +96,6 @@ public class Level_2 extends Fragment {
             public void onClick(View view) {
                 try {
                     if (Integer.parseInt((String) level_2_el2_1.getText()) * Integer.parseInt((String) level_2_el2_2.getText()) == Integer.parseInt(editLabel.getText().toString())) {
-                        Toast.makeText(getContext(), R.string.level_2_second, Toast.LENGTH_SHORT).show();
                         levelName.setVisibility(View.VISIBLE);
                         levelPassed.setVisibility(View.VISIBLE);
 
@@ -108,7 +107,7 @@ public class Level_2 extends Fragment {
                             public void run() {
                                 LevelHolderActivity.changeLevel(2, v.getContext());
                             }
-                        }, 2000);
+                        }, 1500);
                     } else {
                         Toast.makeText(getContext(), R.string.level_2_first, Toast.LENGTH_SHORT).show();
                     }

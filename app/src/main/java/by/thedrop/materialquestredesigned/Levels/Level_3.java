@@ -61,6 +61,7 @@ public class Level_3 extends BasicLevel {
 
         if(MainActivity.currentTheme == 1){
             nextFinal.setImageResource(R.drawable.next_level);
+            next.setImageResource(R.drawable.next_level);
         }
 
         next.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +100,7 @@ public class Level_3 extends BasicLevel {
                     public void run() {
                         LevelHolderActivity.changeLevel(3, v.getContext());
                     }
-                }, 500);
+                }, 1500);
             }
         });
 

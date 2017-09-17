@@ -119,7 +119,6 @@ public class Level_1 extends Fragment {
                             LevelHolderActivity.changeLevel(1, v.getContext());
                         }
                     }, 1500);
-                    Toast.makeText(getContext(), R.string.level_1_second, Toast.LENGTH_SHORT).show();
                 }
             }
         });
