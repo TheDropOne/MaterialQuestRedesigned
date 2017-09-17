@@ -8,4 +8,18 @@
     <string name="error_message">An error occurred</string>
     <string name="level_passed">Level passed!</string>
     <string name="no_available_levels">All levels solved. Great Job!</string>
+
+    <string name="level_1_first">Oh, too easy</string>
+    <string name="level_1_second">Ok, but only once! </string>
+
+    <string name="level_2_first">Wrong!</string>
+    <string name="level_2_second">God damn right!</string>
+
+    <string name="level_3_first">Kek, move back!</string>
+    <string name="level_3_second">Level passed!(No jokes)</string>
+    <string name="level_3_third">Great job</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

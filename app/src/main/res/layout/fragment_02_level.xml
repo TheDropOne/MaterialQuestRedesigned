@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/level_2_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/level_2_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/level_is"
+        android:textColor="@color/buttonGrey"
+        android:textSize="22sp"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/level_2_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="6">
+
+            <TextView
+                android:layout_margin="8dp"
+                android:id="@+id/level_2_el2_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="2"
+                android:textSize="70sp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/level_2_elX"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="\u00D7"
+            android:textSize="65sp"/>
+
+        <RelativeLayout
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6">
+
+            <TextView
+                android:layout_margin="8dp"
+                android:id="@+id/level_2_el2_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textSize="70sp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/level_2_el_edit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/level_2_linear_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="numberSigned"
+        android:textSize="36sp"/>
+
+    <ImageView
+        android:id="@+id/level_2_next"
+        android:layout_width="74dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:alpha="0.4"
+        android:scaleType="fitCenter"
+        android:src="@drawable/next_white"/>
+
+    <TextView
+        android:id="@+id/level_2_passed"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:text="@string/level_passed"
+        android:textSize="30sp"
+        />
+
+
+</RelativeLayout>

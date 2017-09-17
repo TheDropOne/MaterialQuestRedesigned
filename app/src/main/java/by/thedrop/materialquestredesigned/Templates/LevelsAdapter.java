@@ -1,6 +1,7 @@
 package by.thedrop.materialquestredesigned.Templates;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import java.util.List;
 
 import by.thedrop.materialquestredesigned.Activities.LevelHolderActivity;
 import by.thedrop.materialquestredesigned.Activities.MainActivity;
+import by.thedrop.materialquestredesigned.Constants.ColorPalette;
 import by.thedrop.materialquestredesigned.R;
 
 
@@ -42,10 +44,11 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.MyViewHold
         final View view = holder.mItemView;
 
         level.setText(string);
+        level.setBackgroundColor(ColorPalette.get().text_grey_levels_background);
+        level.setTextColor(ColorPalette.get().text_grey_levels);
         int textSize = 24;
-
         level.setTextSize(textSize);
-        /*
+
         if (position > MainActivity.maxAvailableLevel - 1) {
             levelCard.setAlpha(0.4f);//Color.parseColor("#ededed"));
             levelCard.setEnabled(false);
@@ -53,7 +56,7 @@ public class LevelsAdapter extends RecyclerView.Adapter<LevelsAdapter.MyViewHold
         if (position == MainActivity.currentLevel - 1) {
             level.setBackgroundColor(Color.parseColor("#FFFF5656"));
         }
-*/
+
         holder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

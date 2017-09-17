@@ -7,8 +7,8 @@ import android.support.v4.app.Fragment;
  */
 
 public class Level {
-    int number;
-    Fragment mFragment;
+    private int number;
+    private Fragment mFragment;
 
     public Level(int number) {
         this.number = number;

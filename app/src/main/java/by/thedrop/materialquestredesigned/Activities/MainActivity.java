@@ -4,10 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -71,12 +70,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshViews(){
-        Log.i("Colors", "current theme = " + currentTheme);
-        Log.i("Colors", "back = "+ColorPalette.get().background_grey_main);
-        Log.i("Colors", "text = "+ColorPalette.get().text_grey_main);
         mMainRelativeLayout.setBackgroundColor(ColorPalette.get().background_grey_main);
         mCurrentLevelTextView.setTextColor(ColorPalette.get().text_grey_main);
         mLevelsImageView.setBackgroundColor(ColorPalette.get().background_grey_main);
+    }
+
+    public static void setCurrentLevel(int currentLevel, Context context) {
+        MainActivity.currentLevel = currentLevel;
+        if (currentLevel >= maxAvailableLevel) {
+            maxAvailableLevel = currentLevel;
+        }
+        writeDataToPrefs(context);
     }
 
     private void addEventListeners(){
@@ -84,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 currentTheme = currentTheme == 1 ? 2 : 1;
-                writeDataToPrefs();
+                writeDataToPrefs(MainActivity.this);
 
                 ColorPalette.get().initColors(currentTheme,MainActivity.this);
                 refreshViews();
@@ -120,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
             maxAvailableLevel = 1;
         }
     }
-    private void writeDataToPrefs(){
-        mSharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+    private static void writeDataToPrefs(Context context){
+        mSharedPreferences = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putInt(CURRENT_THEME, currentTheme);
         editor.putInt(CURRENT_LEVEL, currentLevel);
