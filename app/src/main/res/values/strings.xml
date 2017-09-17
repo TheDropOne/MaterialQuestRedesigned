@@ -4,10 +4,12 @@
     <string name="run">RUN</string>
     <string name="level_is">level %1$d</string>
     <string name="levels">Levels</string>
+    <string name="alarm">Alarm!</string>
     <string name="title_activity_settings">Settings</string>
     <string name="error_message">An error occurred</string>
     <string name="level_passed">Level passed!</string>
     <string name="no_available_levels">All levels solved. Great Job!</string>
+    <string name="rules">Hey! This is not a fucking usual casual game about flying birds, annoying puzzles or eating colored lollipops. Forget about uniform gameplay and one scenario for the hole game. The quest will force you to think multidimensional as well as you would better have 3 hands or extra fingers. So, slow down the time and perceive your phone not only as brick with \'block\' button. It WILL be hard. Just continue to move forward.</string>
 
     <string name="level_1_first">Oh, too easy</string>
     <string name="level_1_second">Ok, but only once! </string>

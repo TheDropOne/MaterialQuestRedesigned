@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public static int currentLevel;
     public static int maxAvailableLevel;
 
+    private boolean firstLaunch = false;
     public static Typeface fontFutura;
     public static SharedPreferences mSharedPreferences;
 
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         mCurrentLevelTextView.setText(getString(R.string.level_is, currentLevel));
     }
 
-    private void refreshViews(){
+    private void refreshViews() {
         mMainRelativeLayout.setBackgroundColor(ColorPalette.get().background_grey_main);
         mCurrentLevelTextView.setTextColor(ColorPalette.get().text_grey_main);
         mLevelsImageView.setBackgroundColor(ColorPalette.get().background_grey_main);
@@ -83,23 +84,36 @@ public class MainActivity extends AppCompatActivity {
         writeDataToPrefs(context);
     }
 
-    private void addEventListeners(){
+    private void addEventListeners() {
         mThemeSwitcher.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 currentTheme = currentTheme == 1 ? 2 : 1;
                 writeDataToPrefs(MainActivity.this);
 
-                ColorPalette.get().initColors(currentTheme,MainActivity.this);
+                ColorPalette.get().initColors(currentTheme, MainActivity.this);
                 refreshViews();
             }
         });
         mRunButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LevelHolderActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                if (firstLaunch) {
+                    firstLaunch = false;
+
+                    mSharedPreferences = view.getContext().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = mSharedPreferences.edit();
+                    editor.putBoolean("FIRST_LAUNCH", firstLaunch);
+                    editor.apply();
+
+                    Intent intent = new Intent(MainActivity.this, TutorialActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, LevelHolderActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
             }
         });
         mLevelsImageView.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
     private void initPreferences() {
         mSharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         if (mSharedPreferences != null) {
+            firstLaunch = mSharedPreferences.getBoolean("FIRST_LAUNCH", true);
             currentTheme = mSharedPreferences.getInt(CURRENT_THEME, 1);
             currentLevel = mSharedPreferences.getInt(CURRENT_LEVEL, 1);
             maxAvailableLevel = mSharedPreferences.getInt(MAX_AVAILABLE_LEVEL, 1);
@@ -124,7 +139,8 @@ public class MainActivity extends AppCompatActivity {
             maxAvailableLevel = 1;
         }
     }
-    private static void writeDataToPrefs(Context context){
+
+    private static void writeDataToPrefs(Context context) {
         mSharedPreferences = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putInt(CURRENT_THEME, currentTheme);

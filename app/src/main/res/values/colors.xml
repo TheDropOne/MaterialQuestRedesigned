@@ -14,6 +14,7 @@
     <color name="text_dark_grey">#ededed</color>
 
     <color name="defaultDarkerGrey">#cacaca</color>
+    <color name="tutorial">#afafaf</color>
     <color name="buttonGrey">#606060</color>
     <color name="lightGray">#636363</color>
 </resources>
