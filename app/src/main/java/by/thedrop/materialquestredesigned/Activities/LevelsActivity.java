@@ -66,4 +66,11 @@ public class LevelsActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        new LoadLevels().execute();
+    }
 }

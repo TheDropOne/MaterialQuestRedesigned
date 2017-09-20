@@ -14,6 +14,8 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.MobileAds;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import by.thedrop.materialquestredesigned.Constants.ColorPalette;
@@ -62,11 +64,13 @@ public class MainActivity extends AppCompatActivity {
         refreshViews();
 
         addEventListeners();
+
+        MobileAds.initialize(this, "ca-app-pub-8634096223053663~8993425792");
     }
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
+    protected void onResume() {
+        super.onResume();
         mCurrentLevelTextView.setText(getString(R.string.level_is, currentLevel));
     }
 

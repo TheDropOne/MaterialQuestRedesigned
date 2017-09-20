@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,6 +56,13 @@ public class Level_5 extends BasicLevel {
     @BindView(R.id.level_5_switch_4)
     SwitchCompat mSwitchCompat4;
 
+    @BindView(R.id.ad_layout_for_hint_5)
+    LinearLayout mAdLayout;
+    @BindView(R.id.ad_layout_for_hint_5_text)
+    TextView mAdLayoutQuestion;
+    @BindView(R.id.ad_layout_for_hint_5_descr)
+    TextView mAdLayoutDescr;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.fragment_05_level, container, false);
         ButterKnife.bind(this, v);
@@ -70,6 +79,19 @@ public class Level_5 extends BasicLevel {
         mProgressBar2.setVisibility(View.GONE);
         mProgressBar3.setVisibility(View.GONE);
         mProgressBar4.setVisibility(View.GONE);
+
+        mAdLayoutQuestion.setTextColor(ColorPalette.get().text_grey_main);
+        mAdLayoutDescr.setTextColor(ColorPalette.get().text_grey_main);
+        mAdLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (LevelHolderActivity.mAd.isLoaded()) {
+                    LevelHolderActivity.mAd.show();
+                }else {
+                    Toast.makeText(view.getContext(), R.string.ad_not_loaded, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         if (MainActivity.currentTheme == 1) {
             mNext.setImageResource(R.drawable.next_level);
@@ -133,6 +155,7 @@ public class Level_5 extends BasicLevel {
             public void onClick(View view) {
                 if (areAllVisible()) {
                     mPassed.setVisibility(View.VISIBLE);
+                    mAdLayout.setVisibility(View.GONE);
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {

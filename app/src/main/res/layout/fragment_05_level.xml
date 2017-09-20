@@ -27,8 +27,8 @@
             android:layout_below="@+id/level_5_name"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginTop="32dp">
 
             <ProgressBar
@@ -117,5 +117,33 @@
             android:text="@string/level_passed"
             android:textSize="30sp"
             />
+
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ad_layout_for_hint_5"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ad_layout_for_hint_5_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/question"
+            android:textSize="40sp"/>
+
+        <TextView
+            android:id="@+id/ad_layout_for_hint_5_descr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/ad_for_hint"
+            android:textSize="12sp"/>
+    </LinearLayout>
 </RelativeLayout>

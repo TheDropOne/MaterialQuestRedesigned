@@ -14,6 +14,7 @@ import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,12 @@ public class Level_1 extends Fragment {
 
     @BindView(R.id.level_1_main_layout)
     RelativeLayout mMainRelativeLayout;
+    @BindView(R.id.ad_layout_for_hint_1)
+    LinearLayout mAdLayout;
+    @BindView(R.id.ad_layout_for_hint_1_text)
+    TextView mAdLayoutQuestion;
+    @BindView(R.id.ad_layout_for_hint_1_descr)
+    TextView mAdLayoutDescr;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,9 +63,21 @@ public class Level_1 extends Fragment {
         levelName.setTypeface(MainActivity.fontFutura);
         mMainRelativeLayout.setBackgroundColor(ColorPalette.get().background_grey_main);
 
+        mAdLayoutQuestion.setTextColor(ColorPalette.get().text_grey_main);
+        mAdLayoutDescr.setTextColor(ColorPalette.get().text_grey_main);
         if(MainActivity.currentTheme == 2){
             next.setImageResource(R.drawable.next_white);
         }
+        mAdLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (LevelHolderActivity.mAd.isLoaded()) {
+                    LevelHolderActivity.mAd.show();
+                }else{
+                    Toast.makeText(view.getContext(),R.string.ad_not_loaded, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         iteration = 20;
         divider = 20;
@@ -96,6 +115,7 @@ public class Level_1 extends Fragment {
                         next.setVisibility(View.GONE);
                     }
                 } else {
+                    mAdLayout.setVisibility(View.GONE);
                     levelPassed.setVisibility(View.VISIBLE);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         int cx = next.getWidth() / 2;

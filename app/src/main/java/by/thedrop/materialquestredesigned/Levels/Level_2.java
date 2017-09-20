@@ -14,6 +14,7 @@ import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +43,13 @@ public class Level_2 extends Fragment {
     @BindView(R.id.level_2_passed)
     TextView levelPassed;
 
+    @BindView(R.id.ad_layout_for_hint_2)
+    LinearLayout mAdLayout;
+    @BindView(R.id.ad_layout_for_hint_2_text)
+    TextView mAdLayoutQuestion;
+    @BindView(R.id.ad_layout_for_hint_2_descr)
+    TextView mAdLayoutDescr;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +57,7 @@ public class Level_2 extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.fragment_02_level, container, false);
-        ButterKnife.bind(this,v);
+        ButterKnife.bind(this, v);
 
         levelPassed.setTypeface(MainActivity.fontFutura);
         levelPassed.setTextColor(ColorPalette.get().background_inverse);
@@ -88,7 +96,20 @@ public class Level_2 extends Fragment {
                 level_2_el2_2.startAnimation(rotateAnimationTwo);
             }
         });
-        if(MainActivity.currentTheme == 1){
+        mAdLayoutQuestion.setTextColor(ColorPalette.get().text_grey_main);
+        mAdLayoutDescr.setTextColor(ColorPalette.get().text_grey_main);
+        mAdLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (LevelHolderActivity.mAd.isLoaded()) {
+                    LevelHolderActivity.mAd.show();
+                } else {
+                    Toast.makeText(view.getContext(), R.string.ad_not_loaded, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        if (MainActivity.currentTheme == 1) {
             mNextImageButton.setImageResource(R.drawable.next_level);
         }
         mNextImageButton.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +119,7 @@ public class Level_2 extends Fragment {
                     if (Integer.parseInt((String) level_2_el2_1.getText()) * Integer.parseInt((String) level_2_el2_2.getText()) == Integer.parseInt(editLabel.getText().toString())) {
                         levelName.setVisibility(View.VISIBLE);
                         levelPassed.setVisibility(View.VISIBLE);
+                        mAdLayout.setVisibility(View.GONE);
 
                         InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -111,7 +133,7 @@ public class Level_2 extends Fragment {
                     } else {
                         Toast.makeText(getContext(), R.string.level_2_first, Toast.LENGTH_SHORT).show();
                     }
-                }catch (Exception ex){
+                } catch (Exception ex) {
                     Toast.makeText(getContext(), R.string.level_2_first, Toast.LENGTH_SHORT).show();
                 }
             }

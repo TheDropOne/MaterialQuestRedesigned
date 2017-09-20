@@ -40,4 +40,30 @@
             />
     </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/ad_layout_for_hint_7"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ad_layout_for_hint_7_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/question"
+            android:textSize="40sp"/>
+
+        <TextView
+            android:id="@+id/ad_layout_for_hint_7_descr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/ad_for_hint"
+            android:textSize="12sp"/>
+    </LinearLayout>
 </RelativeLayout>

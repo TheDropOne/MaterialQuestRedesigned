@@ -10,6 +10,7 @@
     <string name="level_passed">Level passed!</string>
     <string name="no_available_levels">All levels solved. Great Job!</string>
     <string name="rules">Hey! This is not a fucking usual casual game about flying birds, annoying puzzles or eating colored lollipops. Forget about uniform gameplay and one scenario for the hole game. The quest will force you to think multidimensional as well as you would better have 3 hands or extra fingers. So, slow down the time and perceive your phone not only as brick with \'block\' button. It WILL be hard. Just continue to move forward.</string>
+    <string name="question">\?</string>
 
     <string name="level_1_first">Oh, too easy</string>
     <string name="level_1_second">Ok, but only once! </string>
@@ -21,7 +22,21 @@
     <string name="level_3_second">Level passed!\n(No jokes)</string>
     <string name="level_3_third">Great job</string>
 
+    <string name="level_1_hint">Just continue tap!</string>
+    <string name="level_2_hint">What about some music?</string>
+    <string name="level_3_hint">Scroll down for what?</string>
+    <string name="level_4_hint">Refresh until all end!</string>
+    <string name="level_5_hint">All together</string>
+    <string name="level_6_hint">It\'s sad but true</string>
+    <string name="level_7_hint">Wait. Just wait.</string>
+
+    <string name="ad_closed">Please, watch full ad</string>
+    <string name="ad_cannot_load">Cannot load ad!</string>
+    <string name="ad_watch_to_end">Please, watch till end</string>
+    <string name="ad_not_loaded">Ad not loaded yet</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ad_for_hint">Ad for hint</string>
 
 </resources>

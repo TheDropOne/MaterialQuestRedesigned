@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +34,12 @@ public class Level_7 extends BasicLevel {
     @BindView(R.id.level_7_passed)
     TextView mPassed;
 
+    @BindView(R.id.ad_layout_for_hint_7)
+    LinearLayout mAdLayout;
+    @BindView(R.id.ad_layout_for_hint_7_text)
+    TextView mAdLayoutQuestion;
+    @BindView(R.id.ad_layout_for_hint_7_descr)
+    TextView mAdLayoutDescr;
 
     @BindView(R.id.level_7_alarm)
     ImageView mAlarm;
@@ -49,6 +57,19 @@ public class Level_7 extends BasicLevel {
         mPassed.setVisibility(View.GONE);
         canSolve = true;
 
+        mAdLayoutQuestion.setTextColor(ColorPalette.get().text_grey_main);
+        mAdLayoutDescr.setTextColor(ColorPalette.get().text_grey_main);
+        mAdLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (LevelHolderActivity.mAd.isLoaded()) {
+                    LevelHolderActivity.mAd.show();
+                }else {
+                    Toast.makeText(view.getContext(), R.string.ad_not_loaded, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 
         mCountDownTimer = new CountDownTimer(20000, 5000) {
             public void onTick(long millisUntilFinished) {
@@ -57,6 +78,7 @@ public class Level_7 extends BasicLevel {
             public void onFinish() {
                 if (canSolve) {
                     mPassed.setVisibility(View.VISIBLE);
+                    mAdLayout.setVisibility(View.GONE);
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {

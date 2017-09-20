@@ -11,8 +11,10 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +34,13 @@ public class Level_3 extends BasicLevel {
     RelativeLayout mMainLayout;
     @BindView(R.id.level_3_layout)
     RelativeLayout mRelativeLayout;
+
+    @BindView(R.id.ad_layout_for_hint_3)
+    LinearLayout mAdLayout;
+    @BindView(R.id.ad_layout_for_hint_3_text)
+    TextView mAdLayoutQuestion;
+    @BindView(R.id.ad_layout_for_hint_3_descr)
+    TextView mAdLayoutDescr;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,6 +68,19 @@ public class Level_3 extends BasicLevel {
         levelPassed.setTextColor(ColorPalette.get().level_passed);
         levelPassedFinal.setTextColor(ColorPalette.get().level_passed);
 
+        mAdLayoutQuestion.setTextColor(ColorPalette.get().text_grey_main);
+        mAdLayoutDescr.setTextColor(ColorPalette.get().text_grey_main);
+        mAdLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (LevelHolderActivity.mAd.isLoaded()) {
+                    LevelHolderActivity.mAd.show();
+                }else {
+                    Toast.makeText(view.getContext(), R.string.ad_not_loaded, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         if(MainActivity.currentTheme == 1){
             nextFinal.setImageResource(R.drawable.next_level);
             next.setImageResource(R.drawable.next_level);
@@ -82,6 +104,7 @@ public class Level_3 extends BasicLevel {
                     });
                     anim.start();
 
+
                     nextFinal.setVisibility(View.VISIBLE);
                     levelPassedFinal.setVisibility(View.VISIBLE);
                 } else {
@@ -95,6 +118,7 @@ public class Level_3 extends BasicLevel {
             @Override
             public void onClick(View view) {
                 levelPassedFinal.setText(R.string.level_3_third);
+                mAdLayout.setVisibility(View.GONE);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
